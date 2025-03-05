@@ -1,5 +1,5 @@
-# CONTROL-DIGITAL-
-# Control de Movimiento
+
+# Control de Movimiento - CLASE 2
 
 ## ¿En qué consiste?
 El control de movimiento consiste en gestionar el movimiento mecánico de una carga. 
