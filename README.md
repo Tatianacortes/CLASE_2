@@ -6,26 +6,30 @@
 El control en cascada es una estrategia de control utilizada para mejorar la estabilidad y respuesta de un sistema mediante la implementación de dos o más lazos de control jerárquicos.
 
 ### Esquema
-![Figura de prueba](IMAGES/CASCADA.PNG)
+![Figura de prueba](IMAGES/CASCADA.png)
 
-### 2. Componentes del Control en Cascada
+###  Componentes del Control en Cascada
 - **Controlador Primario (C1)**: Responsable de la variable principal.
 - **Controlador Secundario (C2)**: Regula una variable interna más rápida.
 - **Procesos G1 y G2**: Modelos matemáticos de los procesos controlados.
 
-### 3. Selección de Controladores
+### Selección de Controladores
 - C2 debe ser más rápido que C1.
 - C2 suele ser **P o PI** para evitar ralentización.
 - C1 puede ser **PI o PID** para minimizar el error.
 
-### 4. Casos de Aplicación
+### Casos de Aplicación
 - Cuando las perturbaciones afectan el tiempo de establecimiento.
 - Cuando hay variables internas más rápidas disponibles.
 - Cuando se desea mejorar la dinámica de la variable controlada.
 
-### 5. Métodos de Sintonización
-#### 5.1. Metodologías empíricas
-- **Lazo abierto**: Se ajustan los controladores de forma independiente.
+## Métodos de Sintonización
+#### Metodologías empíricas
+- **Lazo abierto**: Se ajustan los controladores de forma independiente, por metodos conocidos y la interacción entre lazos.
+  
+  Ejemplo
+  ![Figura de prueba](images/CALDERO.png).
+  
 - **Lazo cerrado**: Se utiliza la realimentación para mejorar la respuesta.
 
 #### 5.2. Métodos específicos
