@@ -24,7 +24,7 @@ El control en cascada es una estrategia de control utilizada para mejorar la est
 - Cuando se desea mejorar la dinámica de la variable controlada.
 
 ## Métodos de Sintonización
-#### Metodologías empíricas
+### Metodologías empíricas lazo abierto
 - **Lazo abierto**: Se ajustan los controladores de forma independiente, por metodos conocidos y la interacción entre lazos.
   
   ## Ejemplo 
@@ -44,14 +44,55 @@ Sintonización lazo secundario
 
 Sintonización lazo primario  
 
- ![Figura de prueba](IMAGES/CERRADO.png)
+ ![Figura de prueba](IMAGES/CERRADO.png)  
+
+ $$ K_{Total} = K1 \times 1 = K1 = 1 $$
+
+$$ t_{mTotal} = t_{m1} + t_{m2} $$
+$$ = 10 + 1 = 11 $$
+
+$$ \tau_{Total} \approx \tau_1 \approx 15 $$
+
+$$ K_{c1} = \frac{1.2}{K_{Total}} \left( \frac{\tau_{Total}}{t_{mTotal}} \right) $$
+
+$$ = \frac{1.2}{1} \left( \frac{15}{11} \right) = 1.63 $$  
+
+$$ T_{i1} = 2 t_{mTotal} $$
+$$ = 2 \times 11 = 22 $$
+
+$$ T_{d1} = 0.5 t_{mTotal} $$
+$$ = 0.5 \times 11 = 5.5 $$
+
 ##
 
-- **Lazo cerrado**: Se utiliza la realimentación para mejorar la respuesta.
+- **Método Austin (1986)**: # Resumen  
 
-#### 5.2. Métodos específicos
-- **Método Austin (1986)**: Ajusta ambos lazos con una sola prueba.
-- **Método Hang (1994)**: Basado en pruebas de relé.
+-Sintonización en Lazo Abierto: El método de Austin (1986) permite ajustar sistemas en cascada con una sola prueba.  
+Proporciona ecuaciones para sintonizar controladores primarios (PI o PID) cuando el controlador secundario es P o PI.  
+
+-Sintonización: Consiste en aplicar un cambio de paso en la señal de la válvula de control y registrar la respuesta de las variables primarias y secundarias. A partir de la respuesta secundaria, se determinan la ganancia $$K_2$$, la constante de tiempo $$t_2$$ y el tiempo muerto $$t_{02}$$. Con la respuesta primaria, se obtienen la ganancia $$K_1$$, la constante de tiempo $$t_1$$ y el tiempo muerto $$t_{01}$$ del ciclo primario.  
+
+**Sintonización**
+| **PRIMARY**  | **PI** | **PID** |
+|-------------|--------|--------|
+| $$G_{c1}(s)$$ | $$\tau_{I1} = \tau_1$$ | $$\tau_{I1} = \tau_1$$ ; $$\tau_{D1} = \frac{t_{01} - t_2}{2}$$ |
+| **SECONDARY** $$G_{c2}(s)$$ | $$K_{c1}$$ | $$K_{c1}$$ |
+| **P** | $$1.4 \left[ \frac{1 + K_c K_2}{K_{c2} K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.14} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ | $$1.4 \left[ \frac{1 + K_c K_2}{K_{c2} K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.14} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ |
+| **PI** | $$1.25 \left[ \frac{K_2}{K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.07} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ | $$1.25 \left[ \frac{K_2}{K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.07} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ |
+| **Range** | $$0.02 \leq \left( \frac{T_2}{\tau_1} \right) \leq 0.38$$ <br> $$t_{02} \leq t_{01}$$ | $$0.02 \leq \left( \frac{T_2}{\tau_1} \right) \leq 0.38$$ <br> $$t_{02} \leq t_{01}$$ <br> $$\frac{t_{01} - T_2}{2} \geq 0.08$$ |  
+
+| **PRIMARY**  | **PI** | **PID** |
+|-------------|--------|--------|
+| $$G_{c1}(s)$$ | $$\tau_{I1} = \tau_1$$ | $$\tau_{I1} = \tau_1$$ ; $$\tau_{D1} = \frac{t_{01} - t_2}{2}$$ |
+| **SECONDARY** $$G_{c2}(s)$$ | $$K_{c1}$$ | $$K_{c1}$$ |
+| **P** | $$0.84 \left[ \frac{1 + K_c K_2}{K_{c2} K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.14} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ | $$1.17 \left[ \frac{1 + K_c K_2}{K_{c2} K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.14} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ |
+| **PI** | $$0.75 \left[ \frac{K_2}{K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.07} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ | $$1.04 \left[ \frac{K_2}{K_1} \right] \left[ \frac{t_{01}}{\tau_1} \right]^{-1.07} \left[ \frac{T_2}{\tau_1} \right]^{0.1}$$ |
+| **Range** | $$0.02 \leq \left( \frac{T_2}{\tau_1} \right) \leq 0.65$$ <br> $$t_{02} \leq t_{01}$$ | $$0.02 \leq \left( \frac{T_2}{\tau_1} \right) \leq 0.35$$ <br> $$t_{02} \leq t_{01}$$ <br> $$\frac{t_{01} - T_2}{2} \geq 0.08$$ |
+
+### Metodologías empíricas lazo cerrado
+- **Método Hang (1994)**: Basado en pruebas de relé, primero sintonizando el lazo secundario y posteriormente el primario incluyendo dentro del lazo lo anterior. 
+
+ ![Figura de prueba](IMAGES/hang.png)  
 
 ### 6. Ejemplos Adicionales
 1. **Sistema de climatización**: El controlador primario ajusta la temperatura, mientras que el secundario regula el flujo de aire.
