@@ -1,103 +1,74 @@
 
 # Control de Movimiento - CLASE 2
 
-## ¿En qué consiste?
-El control de movimiento consiste en gestionar el movimiento mecánico de una carga. 
+# Control en Cascada
 
-### Ejemplo
-Una máquina de impresión, donde la carga es el cartucho y el mecanismo que transfiere la energía a este.
+## Definición
+El control en cascada es una estrategia de control utilizada para mejorar la estabilidad y respuesta de un sistema mediante la implementación de dos o más lazos de control jerárquicos.
 
-## ¿En qué industrias se usa?
-- Empaque
-- Ensamblaje
-- Impresión
-- Productos de madera
-- Maquinaria
-- Electrónica y semiconductores
+## Subtítulos y Secciones
 
-## Ejes de movimiento
-Cada movimiento que genere un actuador se denomina eje (axis). Un sistema de control de movimiento puede tener múltiples ejes sincronizados para llevar a cabo una tarea.
+### 1. Introducción
+- Definición de control en cascada
+- Importancia en la industria
 
-### Ejemplo
-En el caso de una impresora:
-- Un eje es el movimiento lineal del cartucho.
-- Otro eje es el rodillo que mueve la hoja de papel.
+### 2. Componentes del Control en Cascada
+- **Controlador Primario (C1)**: Responsable de la variable principal.
+- **Controlador Secundario (C2)**: Regula una variable interna más rápida.
+- **Procesos G1 y G2**: Modelos matemáticos de los procesos controlados.
 
-## ¿Qué se controla?
-- Posición
-- Velocidad
-- Torque
-- Aceleración
+### 3. Selección de Controladores
+- C2 debe ser más rápido que C1.
+- C2 suele ser **P o PI** para evitar ralentización.
+- C1 puede ser **PI o PID** para minimizar el error.
 
-## Ejemplo CNC
-Los sistemas de control de movimiento son fundamentales en máquinas CNC para realizar cortes y movimientos de precisión.
+### 4. Casos de Aplicación
+- Cuando las perturbaciones afectan el tiempo de establecimiento.
+- Cuando hay variables internas más rápidas disponibles.
+- Cuando se desea mejorar la dinámica de la variable controlada.
 
-## ¿Cómo se hacía antes del control?
-Anteriormente, se usaba un único motor con un eje largo y diferentes engranajes para cambiar trayectorias y velocidades. Este método es menos flexible y más costoso en mantenimiento.
+### 5. Métodos de Sintonización
+#### 5.1. Metodologías empíricas
+- **Lazo abierto**: Se ajustan los controladores de forma independiente.
+- **Lazo cerrado**: Se utiliza la realimentación para mejorar la respuesta.
 
-### Ejemplo
-- Máquina Dobladora
-- Máquina Etiquetadora
+#### 5.2. Métodos específicos
+- **Método Austin (1986)**: Ajusta ambos lazos con una sola prueba.
+- **Método Hang (1994)**: Basado en pruebas de relé.
 
-## Componentes del control de movimiento
-- **Human-Machine Interface (HMI)**
-- **Control de movimiento**
-- **Drivers (potencia)**
-- **Actuadores**
-- **Mecanismos de transmisión**
-- **Retroalimentación (sensores)**
+### 6. Ejemplos Adicionales
+1. **Sistema de climatización**: El controlador primario ajusta la temperatura, mientras que el secundario regula el flujo de aire.
+2. **Control de nivel en un tanque**: Un controlador ajusta el flujo de entrada mientras que otro regula la presión de salida.
 
-## Características del control
-- La fuerza negativa provocada por el movimiento debe ser compensada.
-- Se debe controlar el torque para reducir el offset de velocidad.
-- La dinámica de la velocidad debe ser rápida para garantizar trayectorias precisas.
+### 7. Ecuaciones
+- Función de transferencia del proceso secundario:
+  \[ G_2 = \frac{0.5e^{-s}}{2s+1} \]
+- Función de transferencia del proceso primario:
+  \[ G_1 = \frac{e^{-10s}}{15s+1} \]
+- Cálculo de ganancia del controlador secundario:
+  \[ K_{c2} = \frac{0.9}{K_2} \frac{τ_2}{t_m} \]
 
-## Esquema de control
-### Lazo en cascada
-Este esquema mejora la precisión y respuesta del sistema de control de movimiento.
+### 8. Figuras
+1. **Diagrama de bloques de un control en cascada**.
+2. **Respuesta temporal de un sistema en cascada comparado con un sistema de control simple**.
 
-## Aplicaciones prácticas
-- **Transporte**: Cadenas de suministro automatizadas.
-- **Maquinaria de bobinado**: Cortadoras y laminadoras.
-- **Productos alimenticios**: Procesos automatizados.
-- **Fabricación de semiconductores**: Aplicaciones fotográficas en wafers.
-- **Ensamble de componentes electrónicos**.
+### 9. Tablas
+| Controlador | Tipo Recomendado |
+|------------|-----------------|
+| C1 (Primario) | PI o PID |
+| C2 (Secundario) | P o PI |
 
-## Ejemplos adicionales
-1. **Brazo robótico**: Un robot de ensamblaje usa control de movimiento para posicionar piezas con precisión.
-2. **Sistema de riego automatizado**: Un mecanismo controla el desplazamiento de los rociadores en una plantación.
+### 10. Ejercicios
+1. Diseña un sistema de control en cascada para una planta de calentamiento de líquidos.
+2. Calcula la ganancia de los controladores para un sistema con parámetros específicos.
 
-## Ecuaciones
-La ecuación básica del movimiento controlado:
-\[ F = m \cdot a \]
-Donde:
-- \( F \) es la fuerza aplicada,
-- \( m \) es la masa de la carga,
-- \( a \) es la aceleración resultante.
+### 11. Conclusiones
+- El control en cascada mejora la estabilidad y reduce los efectos de perturbaciones.
+- La selección adecuada de controladores es clave para optimizar el desempeño.
+- Diferentes métodos de sintonización pueden utilizarse dependiendo de la aplicación.
 
-## Figuras
-1. Esquema de un sistema de control de movimiento.
-2. Diagrama de un controlador PID en lazo cerrado.
+### 12. Referencias
+- Smith, C., & Corripio, A. *Principles and Practice of Automatic Process Control*.
+- Hang, C.C. *Relay Feedback Auto-Tuning Cascade Controllers*. IEEE, 1994.
+- Austin, J. *Cascade Control Tuning Methods*. Industrial Engineering, 1986.
 
-## Tablas
-| Componente | Función |
-|------------|---------|
-| HMI | Interfaz de usuario |
-| Controlador | Gestiona el movimiento |
-| Driver | Proporciona potencia |
-| Actuadores | Ejecutan el movimiento |
-| Sensores | Retroalimentación |
-
-## Ejercicios
-1. ¿Cuál es la diferencia entre un sistema de control de movimiento con lazo abierto y uno con lazo cerrado?
-2. Diseña un sistema de control de movimiento para una banda transportadora en una fábrica.
-
-## Conclusiones
-- El control de movimiento es clave en la automatización industrial.
-- Permite mejorar la precisión, eficiencia y flexibilidad de los sistemas mecánicos.
-- La implementación de lazos de control mejora la estabilidad y el rendimiento.
-
-## Referencias
-- Ogata, K. *Ingeniería de control moderna*.
-- Chen. *Diseño de sistemas de control analógicos y digitales*.
-- Astrom, K. *Controladores PID: Teoría, diseño y sintonización*.
