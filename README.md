@@ -27,9 +27,26 @@ El control en cascada es una estrategia de control utilizada para mejorar la est
 #### Metodologías empíricas
 - **Lazo abierto**: Se ajustan los controladores de forma independiente, por metodos conocidos y la interacción entre lazos.
   
-  Ejemplo
-  ![Figura de prueba](images/CALDERO.png).
-  
+  ## Ejemplo 
+  ![Figura de prueba](IMAGES/CALDERO.png)
+
+  $$ G_2 = \frac{0.5e^{-s}}{2s + 1} $$
+
+  $$ G_1 = \frac{e^{-10s}}{15s + 1} $$
+
+Sintonización lazo secundario  
+
+  $$ G_2 = \frac{0.5e^{-s}}{2s + 1} $$
+
+  $$ K_{c2} = \frac{0.9}{K_2} \left( \frac{\tau_2}{t_m} \right) = \frac{0.9}{0.5} \left( \frac{2}{1} \right) = 3.6 $$
+
+  $$ T_{i2} = 3.33 t_m = 3.33 $$  
+
+Sintonización lazo primario  
+
+ ![Figura de prueba](IMAGES/CERRADO.png)
+##
+
 - **Lazo cerrado**: Se utiliza la realimentación para mejorar la respuesta.
 
 #### 5.2. Métodos específicos
