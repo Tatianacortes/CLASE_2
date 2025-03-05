@@ -104,36 +104,18 @@ Proporciona ecuaciones para sintonizar controladores primarios (PI o PID) cuando
 | PID        | $$0.6 K_{cr}$$ | $$P_{cr}/2$$   | $$0.125 P_{cr}$$ |  
 
 -Sintonización lazo primario: Se ubica el lazo secundario sintonizando dentro del lazo primario.
+![Figura de prueba](IMAGES/RELEP.png)
+| Controller | $$K_p$$         | $$T_i$$         | $$T_d$$          |
+|------------|----------------|-----------------|------------------|
+| P          | $$0.5 K_{cr}$$  | $$\infty$$      | $$0$$            |
+| PI         | $$0.45 K_{cr}$$ | $$P_{cr}/1.2$$  | $$0$$            |
+| PID        | $$0.6 K_{cr}$$  | $$P_{cr}/2$$    | $$0.125 P_{cr}$$  |
 
 
 
-
-
-### 6. Ejemplos Adicionales
+### Ejemplos Adicionales
 1. **Sistema de climatización**: El controlador primario ajusta la temperatura, mientras que el secundario regula el flujo de aire.
 2. **Control de nivel en un tanque**: Un controlador ajusta el flujo de entrada mientras que otro regula la presión de salida.
-
-### 7. Ecuaciones
-- Función de transferencia del proceso secundario:
-  \[ G_2 = \frac{0.5e^{-s}}{2s+1} \]
-- Función de transferencia del proceso primario:
-  \[ G_1 = \frac{e^{-10s}}{15s+1} \]
-- Cálculo de ganancia del controlador secundario:
-  \[ K_{c2} = \frac{0.9}{K_2} \frac{τ_2}{t_m} \]
-
-### 8. Figuras
-1. **Diagrama de bloques de un control en cascada**.
-2. **Respuesta temporal de un sistema en cascada comparado con un sistema de control simple**.
-
-### 9. Tablas
-| Controlador | Tipo Recomendado |
-|------------|-----------------|
-| C1 (Primario) | PI o PID |
-| C2 (Secundario) | P o PI |
-
-### 10. Ejercicios
-1. Diseña un sistema de control en cascada para una planta de calentamiento de líquidos.
-2. Calcula la ganancia de los controladores para un sistema con parámetros específicos.
 
 ### 11. Conclusiones
 - El control en cascada mejora la estabilidad y reduce los efectos de perturbaciones.
