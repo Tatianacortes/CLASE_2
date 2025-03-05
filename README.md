@@ -5,11 +5,8 @@
 
 El control en cascada es una estrategia de control utilizada para mejorar la estabilidad y respuesta de un sistema mediante la implementación de dos o más lazos de control jerárquicos.
 
-## Subtítulos y Secciones
-
-### 1. Introducción
-- Definición de control en cascada
-- Importancia en la industria
+### Esquema
+![Figura de prueba](IMAGES/CASCADA.PNG)
 
 ### 2. Componentes del Control en Cascada
 - **Controlador Primario (C1)**: Responsable de la variable principal.
