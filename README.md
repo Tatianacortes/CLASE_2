@@ -92,7 +92,22 @@ Proporciona ecuaciones para sintonizar controladores primarios (PI o PID) cuando
 ### Metodologías empíricas lazo cerrado
 - **Método Hang (1994)**: Basado en pruebas de relé, primero sintonizando el lazo secundario y posteriormente el primario incluyendo dentro del lazo lo anterior. 
 
- ![Figura de prueba](IMAGES/hang.png)  
+ ![Figura de prueba](IMAGES/hang.png)    
+
+ $$G_1(s) = \frac{e^{-s}}{(1 + s)^2}; \quad G_2(s) = \frac{e^{-\alpha s}}{(1 + \alpha s)}$$ $$\alpha = 0.1$$
+
+-Sintonización lazo secundario:  
+| Controller | $$K_p$$       | $$T_i$$         | $$T_d$$         |
+|------------|--------------|-----------------|-----------------|
+| P          | $$0.5 K_{cr}$$ | Infinity       | $$0$$           |
+| PI         | $$0.45 K_{cr}$$ | $$P_{cr}/1.2$$ | $$0$$           |
+| PID        | $$0.6 K_{cr}$$ | $$P_{cr}/2$$   | $$0.125 P_{cr}$$ |  
+
+-Sintonización lazo primario: Se ubica el lazo secundario sintonizando dentro del lazo primario.
+
+
+
+
 
 ### 6. Ejemplos Adicionales
 1. **Sistema de climatización**: El controlador primario ajusta la temperatura, mientras que el secundario regula el flujo de aire.
