@@ -117,12 +117,12 @@ Proporciona ecuaciones para sintonizar controladores primarios (PI o PID) cuando
 1. **Sistema de climatización**: El controlador primario ajusta la temperatura, mientras que el secundario regula el flujo de aire.
 2. **Control de nivel en un tanque**: Un controlador ajusta el flujo de entrada mientras que otro regula la presión de salida.
 
-### 11. Conclusiones
+### Conclusiones
 - El control en cascada mejora la estabilidad y reduce los efectos de perturbaciones.
 - La selección adecuada de controladores es clave para optimizar el desempeño.
 - Diferentes métodos de sintonización pueden utilizarse dependiendo de la aplicación.
 
-### 12. Referencias
+### Referencias
 - Smith, C., & Corripio, A. *Principles and Practice of Automatic Process Control*.
 - Hang, C.C. *Relay Feedback Auto-Tuning Cascade Controllers*. IEEE, 1994.
 - Austin, J. *Cascade Control Tuning Methods*. Industrial Engineering, 1986.
